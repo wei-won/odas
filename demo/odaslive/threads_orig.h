@@ -18,8 +18,6 @@
 
     void threads_single_close(objects * objs);
 
-//    CHANGES: int threads_single_process() --> struct threads_single_process()
     int threads_single_process(objects * objs, profiler * prf);
-//    struct threads_single_process(objects * objs, profiler * prf);
 
 #endif

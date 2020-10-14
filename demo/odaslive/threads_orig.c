@@ -625,11 +625,8 @@
 
     }
 
-//    CHANGES: 1. int threads_single_process() --> struct threads_single_process()
-//             2. initialize singleThreadResult
-//    int threads_single_process(objects * objs, profiler * prf) {
     int threads_single_process(objects * objs, profiler * prf) {
-//        struct Results singleThreadResult;
+
         int rtnValue;
         int rtnResample;
         unsigned int iSink;
@@ -1084,11 +1081,6 @@
 
             }
 
-        // CHANGES: 1. singleThreadResult assignment
-//                  2. return rtnValue --> return singleThreadResult
-//        singleThreadResult.rtnValue = rtnValue;
-//        singleThreadResult.objs = objs;
-//        return singleThreadResult;
         return rtnValue;
 
     }

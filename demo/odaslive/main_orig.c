@@ -56,12 +56,6 @@
 
             char stopProcess;
 
-        // CHANGES: declare Result struct
-//        struct Results{
-//            int * trnValue;
-//            objects * objs;
-//        };
-
     // +----------------------------------------------------------+
     // | Signal handler                                           |
     // +----------------------------------------------------------+  
@@ -202,22 +196,7 @@
 
                 threads_single_open(objs);
                 stopProcess = 0;
-
-
-                while((threads_single_process(objs, prf) == 0) && (stopProcess == 0)){
-                    // CHANGES: get values from objs
-                    printf("timeStamp: %llu\n", objs -> mod_sst_object -> out -> timeStamp)
-                    for (iTrackMax = 0; iTrackMax < objs->mod_sst_object->nTracksMax; iTrackMax++){
-                        printf("  ID: %s\n  position: [%1.3f, %1.3f, %1.3f]\n  activity: %1.3f\n",
-                               objs -> mod_sst_object -> out -> tracks -> ids[iTrackMax],
-                               objs -> mod_sst_object -> out -> tracks -> array[iTrackMax * 3 + 0],
-                               objs -> mod_sst_object -> out -> tracks -> array[iTrackMax * 3 + 1],
-                               objs -> mod_sst_object -> out -> tracks -> array[iTrackMax * 3 + 2],
-                               objs -> mod_sst_object -> out -> tracks -> activity[iTrackMax]);
-                    }
-
-
-                };
+                while((threads_single_process(objs, prf) == 0) && (stopProcess == 0));
                 threads_single_close(objs);
 
                 if (verbose == 0x01) printf("[Done] |\n");

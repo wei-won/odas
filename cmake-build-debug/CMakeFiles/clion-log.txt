@@ -1,0 +1,40 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/v_wangwe34/Documents/repos/odas
+-- The C compiler identification is AppleClang 12.0.0.12000032
+-- The CXX compiler identification is AppleClang 12.0.0.12000032
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Error at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake:164 (message):
+  Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE)
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake:445 (_FPHSA_FAILURE_MESSAGE)
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPkgConfig.cmake:45 (find_package_handle_standard_args)
+  CMakeLists.txt:8 (find_package)
+
+
+CMake Warning (dev) in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPkgConfig.cmake:
+  Policy CMP0011 is not set: Included scripts do automatic cmake_policy PUSH
+  and POP.  Run "cmake --help-policy CMP0011" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  The included script
+
+    /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPkgConfig.cmake
+
+  affects policy settings.  CMake is implying the NO_POLICY_SCOPE option for
+  compatibility, so the effects are applied to the including context.
+Call Stack (most recent call first):
+  CMakeLists.txt:8 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/v_wangwe34/Documents/repos/odas/cmake-build-debug/CMakeFiles/CMakeOutput.log".
