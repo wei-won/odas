@@ -89,7 +89,10 @@
 
             file_config = (char *) NULL;
             char verbose = 0x00;
+            // CHANGES: declare iTrackMax
+            unsigned int iTrackMax;
 
+            // CHANGES: default type = processing_singlethread
             type = processing_multithread;
 
             while ((c = getopt(argc,argv, "c:hsv")) != -1) {
