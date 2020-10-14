@@ -206,7 +206,7 @@
 
                 while((threads_single_process(objs, prf) == 0) && (stopProcess == 0)){
                     // CHANGES: get values from objs
-                    printf("timeStamp: %llu\n", objs -> mod_sst_object -> out -> timeStamp)
+                    printf("timeStamp: %llu\n", objs -> mod_sst_object -> out -> timeStamp);
                     for (iTrackMax = 0; iTrackMax < objs->mod_sst_object->nTracksMax; iTrackMax++){
                         printf("  ID: %s\n  position: [%1.3f, %1.3f, %1.3f]\n  activity: %1.3f\n",
                                objs -> mod_sst_object -> out -> tracks -> ids[iTrackMax],
