@@ -27,6 +27,7 @@
     #include <stdio.h>
     #include <string.h>
 
+   // CHANGES: add interface_apollo
     typedef enum interface_type {
 
         interface_undefined = 0,
@@ -35,6 +36,7 @@
         interface_socket = 3,
         interface_soundcard = 4,
         interface_terminal = 5,
+        interface_apollo = 6,
 
     } interface_type;
 
@@ -64,6 +66,8 @@
     interface_obj * interface_construct_soundcard_by_name(char * deviceName);
 
     interface_obj * interface_construct_terminal(void);
+
+    // CHANGES: add declaration of interface_construct_apollo
 
     interface_obj * interface_clone(const interface_obj * obj);
 

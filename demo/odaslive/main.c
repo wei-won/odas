@@ -94,6 +94,7 @@
 
             // CHANGES: default type = processing_singlethread
             type = processing_multithread;
+//            type = processing_singlethread;
 
             while ((c = getopt(argc,argv, "c:hsv")) != -1) {
 

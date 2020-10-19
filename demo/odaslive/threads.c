@@ -628,7 +628,7 @@
 //    CHANGES: 1. int threads_single_process() --> struct threads_single_process()
 //             2. initialize singleThreadResult
 //    int threads_single_process(objects * objs, profiler * prf) {
-    int threads_single_process(objects * objs, profiler * prf) {
+    int threads_single_process(objects * objs, profiler * prf, double (*audio_data)[int size]) {
 //        struct Results singleThreadResult;
         int rtnValue;
         int rtnResample;
@@ -651,7 +651,7 @@
                 // +--------------------------------------------------+  
 
                     begin = clock();
-                    rtnValue = src_hops_process(objs->src_hops_mics_object);
+                    rtnValue = src_hops_process(objs->src_hops_mics_object, double (*audio_data)[int size]);
                     end = clock();
                     prf->src_hops_mics_prf += (float) (((double) (end-begin)) / CLOCKS_PER_SEC);
 

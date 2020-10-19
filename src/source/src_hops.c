@@ -41,6 +41,7 @@
 
         memset(obj->bytes, 0x00, 4 * sizeof(char));
 
+        // FUTURE CHANGES: judgement cases for interface_apollo
         if (!(((obj->interface->type == interface_file)  && (obj->format->type == format_binary_int08)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_binary_int16)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_binary_int24)) ||
@@ -110,6 +111,11 @@
                 src_hops_open_interface_soundcard(obj);
 
             break;
+
+            // CHANGES: add case for Apollo interface
+            case interface_apollo:
+//                src_hops_open_interface_apollo(obj);
+                break;
 
             default:
 
@@ -224,6 +230,12 @@
 
     }
 
+    // CHANGES: add src_hops_open_interface_apollo()
+//    void src_hops_open_interface_apollo(src_hops_obj * obj) {
+//        // TODO: add open
+//
+//    }
+
     void src_hops_close(src_hops_obj * obj) {
 
         switch(obj->interface->type) {
@@ -239,6 +251,11 @@
                 src_hops_close_interface_soundcard(obj);
 
             break;
+
+            // CHANGES: add src_hops_close for Apollo interface
+            case interface_apollo:
+//                src_hops_close_interface_apollo(obj);
+                break;
 
             default:
 
@@ -263,67 +280,79 @@
 
     }
 
-    int src_hops_process(src_hops_obj * obj) {
+    int src_hops_process(src_hops_obj * obj, double (*audio_data)[int size]) {
 
         int rtnValue;
 
-        switch(obj->format->type) {
+        // CHANGES: bypass buffer read for Apollo interface
+        if (obj->format->type == interface_apollo) {
+            rtnValue = src_hops_process_interface_apollo(obj, audio_data);
+        }
+        else {
+            switch(obj->format->type) {
 
-            case format_binary_int08:
+                case format_binary_int08:
 
-                src_hops_process_format_binary_int08(obj);
+                    src_hops_process_format_binary_int08(obj);
 
-            break;
+                    break;
 
-            case format_binary_int16:
+                case format_binary_int16:
 
-                src_hops_process_format_binary_int16(obj);                
+                    src_hops_process_format_binary_int16(obj);
 
-            break;
+                    break;
 
-            case format_binary_int24:
+                case format_binary_int24:
 
-                src_hops_process_format_binary_int24(obj);
+                    src_hops_process_format_binary_int24(obj);
 
-            break;
+                    break;
 
-            case format_binary_int32:
+                case format_binary_int32:
 
-                src_hops_process_format_binary_int32(obj);
+                    src_hops_process_format_binary_int32(obj);
 
-            break;
+                    break;
 
-            default:
+                default:
 
-                printf("Source hops: Invalid format type.\n");
-                exit(EXIT_FAILURE);
+                    printf("Source hops: Invalid format type.\n");
+                    exit(EXIT_FAILURE);
 
-            break;
+                    break;
 
+            }
+
+            switch(obj->interface->type) {
+
+                case interface_file:
+
+                    rtnValue = src_hops_process_interface_file(obj);
+
+                    break;
+
+                case interface_soundcard:
+
+                    rtnValue = src_hops_process_interface_soundcard(obj);
+
+                    break;
+
+                    // CHANGES: add src_hops_process case for Apollo interface
+                case interface_apollo:
+                    // rtnValue = src_hops_process_interface_apollo(obj);
+                    break;
+
+                default:
+
+                    printf("Source hops: Invalid interface type.\n");
+                    exit(EXIT_FAILURE);
+
+                    break;
+
+            }
         }
 
-        switch(obj->interface->type) {
-
-            case interface_file:
-
-                rtnValue = src_hops_process_interface_file(obj);
-
-            break;
-
-            case interface_soundcard:
-
-                rtnValue = src_hops_process_interface_soundcard(obj);
-
-            break;
-
-            default:
-
-                printf("Source hops: Invalid interface type.\n");
-                exit(EXIT_FAILURE);
-
-            break;           
-
-        }
 
         obj->timeStamp++;
         obj->out->timeStamp = obj->timeStamp;
@@ -373,6 +402,25 @@
 
         return rtnValue;
 
+    }
+
+    // CHANGES: add src_hops_process_interface_apollo()
+    int src_hops_process_interface_apollo(src_hops_obj * obj, double (*audio_data)[int size]) {
+        unsigned int iSample;
+        unsigned int iChannel;
+        float sample;
+
+        for (iSample = 0; iSample < obj->hopSize; iSample++) {
+
+            for (iChannel = 0; iChannel < obj->nChannels; iChannel++) {
+
+                sample = (float) *audio_data[iChannel][iSample];
+
+                obj->out->hops->array[iChannel][iSample] = sample;
+
+            }
+        }
+        return 0;
     }
 
     void src_hops_process_format_binary_int08(src_hops_obj * obj) {

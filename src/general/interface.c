@@ -317,6 +317,22 @@
 
     }
 
+   // CHANGES: add interface construction for Apollo
+   interface_obj * interface_construct_apollo() {
+
+       interface_obj * obj;
+
+       obj = (interface_obj *) malloc(sizeof(interface_obj));
+       obj->type = interface_apollo;
+       obj->fileName = (char *) NULL;
+       obj->ip = (char *) NULL;
+       obj->port = 0;
+       obj->deviceName = (char *) NULL;
+
+       return obj;
+
+   }
+
     interface_obj * interface_clone(const interface_obj * obj) {
 
         interface_obj * clone;
@@ -437,6 +453,11 @@
                     printf("type = terminal\n");
 
                 break;
+
+                // CHANGES: add case for Apollo interface
+                case interface_apollo:
+                    printf("type = apollo\n");
+                    break;
 
             }
 

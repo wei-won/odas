@@ -53,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602531007959</updated>
-      <workItem from="1602531009071" duration="24240000" />
+      <workItem from="1602531009071" duration="74446000" />
     </task>
     <servers />
   </component>
@@ -69,5 +69,9 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="518" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1602645297797" />
+    <state x="725" y="-1065" width="670" height="676" key="search.everywhere.popup" timestamp="1603085568717">
+      <screen x="-529" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="725" y="-1065" width="670" height="676" key="search.everywhere.popup/-529.-1417.2560.1417/0.23.1440.877@-529.-1417.2560.1417" timestamp="1603085568717" />
   </component>
 </project>

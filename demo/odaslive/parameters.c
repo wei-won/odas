@@ -205,6 +205,12 @@
                 cfg->interface = interface_construct_soundcard_by_name(tmpStr2);
 
             }
+            // CHANGES: add interface for Apollo
+            else if (strcmp(tmpStr1, "apollo") == 0) {
+
+                cfg->interface = interface_construct_apollo();
+
+            }
             else {
                 printf("raw.interface.type: Invalid type\n");
                 exit(EXIT_FAILURE);
