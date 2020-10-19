@@ -204,6 +204,7 @@ add_executable(odaslive
     demo/odaslive/parameters.c
     demo/odaslive/profiler.c
     demo/odaslive/threads.c
+    demo/odaslive/main_api_single_thread.c
 )
 target_link_libraries(odaslive
     odas
