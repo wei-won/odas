@@ -23,7 +23,7 @@ odasStruct * odas_init();
 
 int odas_close(odasStruct * odas_struct);
 
-int odas_proc(odasStruct * odas_struct, double (*audio_data)[int size]);
+int odas_proc(odasStruct * odas_struct, double *audio_data);
 
 #endif //ODAS_MAIN_API_SINGLE_THREAD_H
 

@@ -196,7 +196,11 @@ int main(int argc, char * argv[]) {
 
         threads_single_open(objs);
         stopProcess = 0;
-        while((threads_single_process(objs, prf) == 0) && (stopProcess == 0));
+        // CHANGES:
+        // 1) placeholder code
+        // 2) threads_single_process(objs, prf) --> threads_single_process(objs, prf, audio_data)
+        double *audio_data = NULL;
+        while((threads_single_process(objs, prf, audio_data) == 0) && (stopProcess == 0));
         threads_single_close(objs);
 
         if (verbose == 0x01) printf("[Done] |\n");

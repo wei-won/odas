@@ -68,6 +68,7 @@
     interface_obj * interface_construct_terminal(void);
 
     // CHANGES: add declaration of interface_construct_apollo
+    interface_obj * interface_construct_apollo();
 
     interface_obj * interface_clone(const interface_obj * obj);
 

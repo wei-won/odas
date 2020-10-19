@@ -2,33 +2,15 @@
 #include "main_api_single_thread.h"
 
 
-// Flag
-//char stopProcess;
-
-// CHANGES: declare Result struct
-//        struct Results{
-//            int * trnValue;
-//            objects * objs;
-//        };
-
-
-// Signal handler
-//void sighandler(int signum) {
-//    stopProcess = 1;
-//}
-
 odasStruct * odas_init(){
-    odasStruct odas_struct;
+    odasStruct * odas_struct;
     objects * objs;
     char * file_config;
     configs * cfgs; // Configurations
     profiler * prf; // Profiler
 
     odas_struct = (odasStruct *) malloc(sizeof(odasStruct));
-
-    file_config = (char *) NULL;
-    file_config = (char *) malloc(sizeof(char) * (strlen(optarg)+1));
-    strcpy(file_config, optarg);
+    file_config = "../../config/odaslive/respeaker_4_mic_array.cfg";
 
     if (file_config == NULL) {
         printf("Missing configuration file.\n");
@@ -59,9 +41,9 @@ int odas_close(odasStruct * odas_struct){
     return 0;
 }
 
-int odas_proc(odasStruct * odas_struct, double (*audio_data)[int size]){
-
+int odas_proc(odasStruct * odas_struct, double *audio_data){
     threads_single_process(odas_struct->objs, odas_struct->prf, audio_data);
+
     return 0;
 }
 

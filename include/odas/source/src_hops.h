@@ -84,13 +84,13 @@
 
     void src_hops_close_interface_soundcard(src_hops_obj * obj);
 
-    int src_hops_process(src_hops_obj * obj, double (*audio_data)[int size]);
+    int src_hops_process(src_hops_obj * obj, double *audio_data);
 
     int src_hops_process_interface_file(src_hops_obj * obj);
 
     int src_hops_process_interface_soundcard(src_hops_obj * obj);
 
-    int src_hops_process_interface_apollo(src_hops_obj * obj, double (*audio_data)[int size]);
+    int src_hops_process_interface_apollo(src_hops_obj * obj, double *audio_data);
 
     void src_hops_process_format_binary_int08(src_hops_obj * obj);
 

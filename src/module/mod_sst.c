@@ -382,8 +382,7 @@
 
     }
 
-// CHANGES: int * mod_sst_process() --> mod_sst_obj * mod_sst_process()
-   int * mod_sst_process(mod_sst_obj * obj) {
+    int mod_sst_process(mod_sst_obj * obj) {
 
         unsigned int iPot;
         unsigned int iTrackMax;
@@ -1172,9 +1171,8 @@
             rtnValue = -1;
 
         }
-// CHANGES: return rtnValue --> return obj
+
         return rtnValue;
-//        return obj;
 
     }
 

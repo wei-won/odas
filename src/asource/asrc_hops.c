@@ -64,6 +64,8 @@
         asrc_hops_obj * obj;
         msg_hops_obj * msg_hops_out;
         int rtnValue;
+        // CHANGES: placeholder code
+        double *audio_data;
 
         obj = (asrc_hops_obj *) ptr;
 
@@ -75,7 +77,8 @@
             // Pop a message, process, and push back
             msg_hops_out = amsg_hops_empty_pop(obj->out);
             src_hops_connect(obj->src_hops, msg_hops_out);
-            rtnValue = src_hops_process(obj->src_hops);
+            //CHANGES: src_hops_process(obj->src_hops) --> src_hops_process(obj->src_hops, audio_data)
+            rtnValue = src_hops_process(obj->src_hops, audio_data);
             src_hops_disconnect(obj->src_hops);
             amsg_hops_filled_push(obj->out, msg_hops_out);
 

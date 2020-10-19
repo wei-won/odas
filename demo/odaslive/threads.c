@@ -625,11 +625,10 @@
 
     }
 
-//    CHANGES: 1. int threads_single_process() --> struct threads_single_process()
-//             2. initialize singleThreadResult
-//    int threads_single_process(objects * objs, profiler * prf) {
-    int threads_single_process(objects * objs, profiler * prf, double (*audio_data)[int size]) {
-//        struct Results singleThreadResult;
+
+    // CHANGES: added arg for threads_single_process()
+    int threads_single_process(objects * objs, profiler * prf, double *audio_data) {
+
         int rtnValue;
         int rtnResample;
         unsigned int iSink;
@@ -651,7 +650,7 @@
                 // +--------------------------------------------------+  
 
                     begin = clock();
-                    rtnValue = src_hops_process(objs->src_hops_mics_object, double (*audio_data)[int size]);
+                    rtnValue = src_hops_process(objs->src_hops_mics_object, audio_data);
                     end = clock();
                     prf->src_hops_mics_prf += (float) (((double) (end-begin)) / CLOCKS_PER_SEC);
 
@@ -1084,11 +1083,7 @@
 
             }
 
-        // CHANGES: 1. singleThreadResult assignment
-//                  2. return rtnValue --> return singleThreadResult
-//        singleThreadResult.rtnValue = rtnValue;
-//        singleThreadResult.objs = objs;
-//        return singleThreadResult;
+
         return rtnValue;
 
     }

@@ -114,7 +114,7 @@
 
             // CHANGES: add case for Apollo interface
             case interface_apollo:
-//                src_hops_open_interface_apollo(obj);
+
                 break;
 
             default:
@@ -230,11 +230,6 @@
 
     }
 
-    // CHANGES: add src_hops_open_interface_apollo()
-//    void src_hops_open_interface_apollo(src_hops_obj * obj) {
-//        // TODO: add open
-//
-//    }
 
     void src_hops_close(src_hops_obj * obj) {
 
@@ -254,7 +249,7 @@
 
             // CHANGES: add src_hops_close for Apollo interface
             case interface_apollo:
-//                src_hops_close_interface_apollo(obj);
+
                 break;
 
             default:
@@ -280,7 +275,7 @@
 
     }
 
-    int src_hops_process(src_hops_obj * obj, double (*audio_data)[int size]) {
+    int src_hops_process(src_hops_obj * obj, double *audio_data) {
 
         int rtnValue;
 
@@ -340,7 +335,7 @@
 
                     // CHANGES: add src_hops_process case for Apollo interface
                 case interface_apollo:
-                    // rtnValue = src_hops_process_interface_apollo(obj);
+
                     break;
 
                 default:
@@ -405,7 +400,7 @@
     }
 
     // CHANGES: add src_hops_process_interface_apollo()
-    int src_hops_process_interface_apollo(src_hops_obj * obj, double (*audio_data)[int size]) {
+    int src_hops_process_interface_apollo(src_hops_obj * obj, double *audio_data) {
         unsigned int iSample;
         unsigned int iChannel;
         float sample;
@@ -414,7 +409,8 @@
 
             for (iChannel = 0; iChannel < obj->nChannels; iChannel++) {
 
-                sample = (float) *audio_data[iChannel][iSample];
+//                sample = (float) *audio_data[iChannel][iSample];
+                sample = (float) *(audio_data + iChannel * obj->hopSize + iSample);
 
                 obj->out->hops->array[iChannel][iSample] = sample;
 

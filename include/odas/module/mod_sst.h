@@ -151,9 +151,7 @@
 
     void mod_sst_destroy(mod_sst_obj * obj);
 
-// CHANGES: int * mod_sst_process() --> mod_sst_obj * mod_sst_process()
-    int * mod_sst_process(mod_sst_obj * obj);
-//    mod_sst_obj * mod_sst_process(mod_sst_obj * obj);
+    int mod_sst_process(mod_sst_obj * obj);
 
     void mod_sst_connect(mod_sst_obj * obj, msg_pots_obj * in1, msg_targets_obj * in2, msg_tracks_obj * out);
 
