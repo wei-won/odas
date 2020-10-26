@@ -2,15 +2,15 @@
 #include <odas/odas.h>
 
 #include "main_api_single_thread.h"
-#include "parameters.h"
-#include "configs.h"
-#include "objects.h"
-#include "threads.h"
-#include "profiler.h"
+//#include "parameters.h"
+//#include "configs.h"
+//#include "objects.h"
+//#include "threads.h"
+//#include "profiler.h"
 
-#include <getopt.h>
-#include <time.h>
-#include <signal.h>
+//#include <getopt.h>
+//#include <time.h>
+//#include <signal.h>
 
 
 odasStruct* odas_struct;
@@ -22,11 +22,10 @@ int main(int argc, char * argv[]) {
 
     odas_struct = odas_init();
     stopProcess = 0;
-    // CHANGES:
-    // 1) placeholder code
-    // 2) threads_single_process(objs, prf) --> threads_single_process(objs, prf, audio_data)
+
     int ch = 4;
-    int hop_size = 10;
+    int hop_size = 1000;
+    int a = RAND_MAX;
     double vec[ch][hop_size];
     double *audio_data;
     audio_data = vec;

@@ -41,7 +41,7 @@
 
         memset(obj->bytes, 0x00, 4 * sizeof(char));
 
-        // FUTURE CHANGES: judgement cases for interface_apollo
+        // CHANGES: judgement cases for interface_apollo
         if (!(((obj->interface->type == interface_file)  && (obj->format->type == format_binary_int08)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_binary_int16)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_binary_int24)) ||
@@ -49,7 +49,8 @@
               ((obj->interface->type == interface_soundcard)  && (obj->format->type == format_binary_int08)) ||
               ((obj->interface->type == interface_soundcard)  && (obj->format->type == format_binary_int16)) ||
               ((obj->interface->type == interface_soundcard)  && (obj->format->type == format_binary_int24)) ||
-              ((obj->interface->type == interface_soundcard)  && (obj->format->type == format_binary_int32)))) {
+              ((obj->interface->type == interface_soundcard)  && (obj->format->type == format_binary_int32)) ||
+              (obj->interface->type == interface_apollo))) {
             
             printf("Source hops: Invalid interface and/or format.\n");
             exit(EXIT_FAILURE);

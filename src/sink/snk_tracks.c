@@ -37,10 +37,12 @@
         obj->format = format_clone(snk_tracks_config->format);
         obj->interface = interface_clone(snk_tracks_config->interface);
 
+        // CHANGES: add sink interface type judgement case for apollo
         if (!(((obj->interface->type == interface_blackhole)  && (obj->format->type == format_undefined)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_text_json)) ||
               ((obj->interface->type == interface_socket)  && (obj->format->type == format_text_json)) ||
-              ((obj->interface->type == interface_terminal) && (obj->format->type == format_text_json)))) {
+              ((obj->interface->type == interface_terminal) && (obj->format->type == format_text_json)) ||
+              (obj->interface->type == interface_apollo))) {
             
             interface_printf(obj->interface);
             format_printf(obj->format);
@@ -112,6 +114,11 @@
                 snk_tracks_open_interface_terminal(obj);
 
             break;
+
+            // CHANGES: add interface_apollo case for snk_tracks_open()
+            case interface_apollo:
+
+                break;
 
             default:
 
@@ -192,6 +199,11 @@
                 snk_tracks_close_interface_terminal(obj);
 
             break;
+
+            // CHANGES: add interface_apollo case for snk_tracks_close()
+            case interface_apollo:
+
+                break;
 
             default:
 
@@ -282,6 +294,11 @@
                     snk_tracks_process_interface_terminal(obj);
 
                 break;
+
+                // CHANGES: add interface_apollo case for snk_tracks_process()
+                case interface_apollo:
+
+                    break;
 
                 default:
 

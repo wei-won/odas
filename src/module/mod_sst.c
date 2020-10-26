@@ -1156,6 +1156,7 @@
             else {
 
                 tracks_zero(obj->out->tracks);
+                printf("zeros track!\n");
 
             }
 

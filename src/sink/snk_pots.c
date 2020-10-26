@@ -37,11 +37,13 @@
         obj->format = format_clone(snk_pots_config->format);
         obj->interface = interface_clone(snk_pots_config->interface);
 
+        // CHANGES: add sink interface type judgement case for apollo
         if (!(((obj->interface->type == interface_blackhole)  && (obj->format->type == format_undefined)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_binary_float)) ||
               ((obj->interface->type == interface_file)  && (obj->format->type == format_text_json)) ||
               ((obj->interface->type == interface_socket)  && (obj->format->type == format_text_json)) ||
-              ((obj->interface->type == interface_terminal) && (obj->format->type == format_text_json)))) {
+              ((obj->interface->type == interface_terminal) && (obj->format->type == format_text_json)) ||
+              (obj->interface->type == interface_apollo))) {
             
             printf("Sink pots: Invalid interface and/or format.\n");
             exit(EXIT_FAILURE);
@@ -110,6 +112,11 @@
                 snk_pots_open_interface_terminal(obj);
 
             break;
+
+            // CHANGES: add interface_apollo case for snk_pots_open()
+            case interface_apollo:
+
+                break;
 
             default:
 
@@ -190,6 +197,11 @@
                 snk_pots_close_interface_terminal(obj);
 
             break;
+
+            // CHANGES: add interface_apollo case for snk_pots_close()
+            case interface_apollo:
+
+                break;
 
             default:
 
@@ -286,6 +298,11 @@
                     snk_pots_process_interface_terminal(obj);
 
                 break;
+
+                // CHANGES: add interface_apollo case for snk_pots_process()
+                case interface_apollo:
+
+                    break;
 
                 default:
 

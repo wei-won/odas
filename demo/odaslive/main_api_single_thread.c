@@ -10,7 +10,7 @@ odasStruct * odas_init(){
     profiler * prf; // Profiler
 
     odas_struct = (odasStruct *) malloc(sizeof(odasStruct));
-    file_config = "../../config/odaslive/respeaker_4_mic_array.cfg";
+    file_config = "../config/odaslive/respeaker_4_mic_array.cfg";
 
     if (file_config == NULL) {
         printf("Missing configuration file.\n");
@@ -35,7 +35,7 @@ int odas_close(odasStruct * odas_struct){
     // Free memory
     objects_destroy(odas_struct->objs);
     configs_destroy(odas_struct->cfgs);
-    free((void *) odas_struct->file_config);
+//    free((void *) odas_struct->file_config);
     profiler_destroy(odas_struct->prf);
 
     return 0;

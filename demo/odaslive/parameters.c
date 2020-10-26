@@ -773,6 +773,12 @@
                 cfg->interface = interface_construct_terminal();               
 
             }
+            // CHANGES: add "apollo" interface type for ssl.potential (cfg)
+            else if (strcmp(tmpStr1, "apollo") == 0) {
+
+                cfg->interface = interface_construct_apollo();
+
+            }
             else {
 
                 printf("ssl.potential.interface.type: Invalid type\n");
@@ -1151,6 +1157,12 @@
             else if (strcmp(tmpStr1, "terminal") == 0) {
 
                 cfg->interface = interface_construct_terminal();               
+
+            }
+            // CHANGES: add "apollo" interface type for sst.tracked (cfg)
+            else if (strcmp(tmpStr1, "apollo") == 0) {
+
+                cfg->interface = interface_construct_apollo();
 
             }
             else {
