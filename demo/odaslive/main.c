@@ -2,27 +2,12 @@
 #include <odas/odas.h>
 
 #include "main_api_single_thread.h"
-//#include "parameters.h"
-//#include "configs.h"
-//#include "objects.h"
-//#include "threads.h"
-//#include "profiler.h"
-
-//#include <getopt.h>
-//#include <time.h>
-//#include <signal.h>
-
 
 odasStruct* odas_struct;
-
-char stopProcess;
-
 
 int main(int argc, char * argv[]) {
 
     odas_struct = odas_init();
-    stopProcess = 0;
-
     int ch = 4;
     int hop_size = 1000;
     int a = RAND_MAX;
@@ -34,7 +19,6 @@ int main(int argc, char * argv[]) {
             vec[i][j] = 1;
         }
     }
-
     if (!odas_proc(odas_struct, audio_data) == 0) {
         printf("Error Processing Audio Data!\n");
     }
@@ -44,10 +28,7 @@ int main(int argc, char * argv[]) {
                odas_struct->objs->mod_sst_object->out->tracks->array[0 * 3 + 1],
                odas_struct->objs->mod_sst_object->out->tracks->array[0 * 3 + 2]);
     }
-
     odas_close(odas_struct);
 
-
     return 0;
-
 }
