@@ -276,12 +276,12 @@
 
     }
 
-    int src_hops_process(src_hops_obj * obj, double *audio_data) {
+    int src_hops_process(src_hops_obj * obj, double **audio_data) {
 
         int rtnValue;
 
         // CHANGES: bypass buffer read for Apollo interface
-        if (obj->format->type == interface_apollo) {
+        if (obj->interface->type == interface_apollo) {
             rtnValue = src_hops_process_interface_apollo(obj, audio_data);
         }
         else {
@@ -401,7 +401,7 @@
     }
 
     // CHANGES: add src_hops_process_interface_apollo()
-    int src_hops_process_interface_apollo(src_hops_obj * obj, double *audio_data) {
+    int src_hops_process_interface_apollo(src_hops_obj * obj, double **audio_data) {
         unsigned int iSample;
         unsigned int iChannel;
         float sample;
@@ -409,14 +409,13 @@
         for (iSample = 0; iSample < obj->hopSize; iSample++) {
 
             for (iChannel = 0; iChannel < obj->nChannels; iChannel++) {
-
-//                sample = (float) *audio_data[iChannel][iSample];
-                sample = (float) *(audio_data + iChannel * obj->hopSize + iSample);
-
+                sample = (float) audio_data[iChannel][iSample];
+//                sample = (float) *(audio_data + iChannel * obj->hopSize + iSample);
                 obj->out->hops->array[iChannel][iSample] = sample;
 
             }
         }
+
         return 0;
     }
 

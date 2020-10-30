@@ -30,21 +30,19 @@ odasStruct * odas_init(){
     return odas_struct;
 }
 
-int odas_close(odasStruct * odas_struct){
+void odas_close(odasStruct * odas_struct){
     threads_single_close(odas_struct->objs);
     // Free memory
     objects_destroy(odas_struct->objs);
     configs_destroy(odas_struct->cfgs);
-//    free((void *) odas_struct->file_config);
     profiler_destroy(odas_struct->prf);
-
-    return 0;
 }
 
-int odas_proc(odasStruct * odas_struct, double *audio_data){
-    threads_single_process(odas_struct->objs, odas_struct->prf, audio_data);
+int odas_proc(odasStruct * odas_struct, double **audio_data){
+    int rtnValue;
+    rtnValue = threads_single_process(odas_struct->objs, odas_struct->prf, audio_data);
 
-    return 0;
+    return rtnValue;
 }
 
 

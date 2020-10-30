@@ -1145,7 +1145,6 @@
                             obj->out->tracks->ids[iTrackMax] = obj->ids[iTrackMax];
                             strcpy(obj->out->tracks->tags[iTrackMax],obj->tags[iTrackMax]);
                             obj->out->tracks->activity[iTrackMax] = obj->sourceActivities[iTrackMax];
-
                         }
 
                     }
@@ -1156,7 +1155,6 @@
             else {
 
                 tracks_zero(obj->out->tracks);
-                printf("zeros track!\n");
 
             }
 

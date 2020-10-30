@@ -627,7 +627,7 @@
 
 
     // CHANGES: added arg for threads_single_process()
-    int threads_single_process(objects * objs, profiler * prf, double *audio_data) {
+    int threads_single_process(objects * objs, profiler * prf, double **audio_data) {
 
         int rtnValue;
         int rtnResample;

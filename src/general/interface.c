@@ -318,7 +318,7 @@
     }
 
    // CHANGES: add interface construction for Apollo
-   interface_obj * interface_construct_apollo() {
+   interface_obj * interface_construct_apollo(void) {
 
        interface_obj * obj;
 
